@@ -30,7 +30,7 @@ class MJSnackBar: NSObject {
 	/**
 		Set all times used for SnackBar
 	*/
-	private let _appearanceTime :Double = 4.0
+	private let _appearanceDuration :Double = 4.0
 	private let _animationTime :Double = 0.3
 	
 	/**
@@ -55,10 +55,20 @@ class MJSnackBar: NSObject {
 	private var _screenSize :CGRect!
 	
 	/**
-		∏roperty to get if the view is shown or is showing
+		Property to get if the view is shown or is showing
 	*/
 	private var _shown :Bool!
 	private var _animating :Bool!
+	
+	/**
+		Enum to know why SnackBar disappeared : due to Timer or User action
+	*/
+	enum EndShowingType {
+		case TIMER, USER
+	}
+	
+	var completionMethod :((EndShowingType)->())? = nil
+	var _snackID = 0
 	
 	override init() {
 		
@@ -75,7 +85,7 @@ class MJSnackBar: NSObject {
 	private func createView() {
 
 		_snackBarView = UIView(frame: CGRect(x: _spaceOnSide,
-			y: Double(_screenSize.height),
+			y: Double(_screenSize.height) + 1,
 			width: Double(_screenSize.width) - (_spaceOnSide * 2),
 			height: _snackViewHeight))
 		_snackBarView.backgroundColor = UIColor.init(netHex: _backgroundColor)
@@ -91,7 +101,7 @@ class MJSnackBar: NSObject {
 	*/
 	private func addActionButton() {
 		
-		let textSize = _actionButtonText.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(_actionButtonTextSize)])
+		let textSize = _actionButtonText.sizeWithAttributes([NSFontAttributeName: UIFont.boldSystemFontOfSize(_actionButtonTextSize)])
 		
 		_snackBarActionButton = UIButton(frame: CGRect(x: (_snackBarView.frame.width - textSize.width) - _snackBarItemsSideSize,
 			y: (_snackBarView.frame.height / 2) - (textSize.height / 2),
@@ -102,10 +112,10 @@ class MJSnackBar: NSObject {
 		
 		_snackBarActionButton?.setTitleColor(UIColor.init(netHex:_actionButtonTextColorNormal), forState: .Normal)
 		_snackBarActionButton?.setTitleColor(UIColor.init(netHex: _actionButtonTextColorSelected), forState: .Highlighted)
-		_snackBarActionButton?.titleLabel!.font = UIFont.systemFontOfSize(_actionButtonTextSize)
+		_snackBarActionButton?.titleLabel!.font = UIFont.boldSystemFontOfSize(_actionButtonTextSize)
 		_snackBarActionButton?.contentHorizontalAlignment = .Right
 		
-		_snackBarActionButton?.addTarget(self, action: #selector(self.actionButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+		_snackBarActionButton?.addTarget(self, action: #selector(actionButtonHandler), forControlEvents: UIControlEvents.TouchUpInside)
 		
 		_snackBarView.addSubview(_snackBarActionButton!)
 	}
@@ -138,12 +148,29 @@ class MJSnackBar: NSObject {
 	/**
 		Show the SnackBar on view passed on parameter
 	*/
-	internal func show(onView :UIView, message :String) {
+	internal func show(onView :UIView, message :String, completion: (EndShowingType)->()) {
 		
-		if (_shown == true || _animating == true) {
-			print("Je suis déjà là")
+		if (_animating == true) {
 			return
 		}
+		_snackID += 1
+		completionMethod = completion
+		if (_shown == true) {
+			hideSnackView() {
+				self.showSnackView(onView, message: message) {
+					completion(EndShowingType.USER)
+				}
+			}
+		}
+		else {
+			self.showSnackView(onView, message: message) {
+				completion(EndShowingType.TIMER)
+			}
+		}
+		
+	}
+
+	private func showSnackView(onView :UIView, message :String, completion: ()->()) {
 		_animating = true
 		addActionText(message)
 		onView.addSubview(_snackBarView)
@@ -155,22 +182,42 @@ class MJSnackBar: NSObject {
 			}, completion: { _ in
 				self._animating = false
 				self._shown = true
+				dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+					let tmp = self._snackID
+					NSThread.sleepForTimeInterval(NSTimeInterval(self._appearanceDuration))
+					if (tmp != self._snackID) { return }
+					dispatch_async(dispatch_get_main_queue(), {
+						if (self._shown == true) {
+							self.hideSnackView() {
+								completion()
+							}
+						}
+					});
+				});
 		})
+
 	}
-	
+
 	/**
 		Dismiss the SnackbarView
 	*/
 	internal func dismiss() {
-		
+
+		hideSnackView() {
+			if (self.completionMethod != nil) {
+				self.completionMethod!(EndShowingType.USER)
+			}
+		}
+	}
+	
+	private func hideSnackView(completion: () -> ()) {
 		if (_shown == false || _animating == true) {
-			print("Je suis pas là")
 			return
 		}
 		_animating = true
 		UIView.animateWithDuration(_animationTime, animations: { _ in
 			self._snackBarView.frame = CGRect(x: self._spaceOnSide,
-				y: Double(self._screenSize.height),
+				y: Double(self._screenSize.height) + 1,
 				width: Double(self._screenSize.width) - (self._spaceOnSide * 2),
 				height: self._snackViewHeight)
 			
@@ -179,14 +226,14 @@ class MJSnackBar: NSObject {
 				self._snackBarView.removeFromSuperview()
 				self._animating = false
 				self._shown = false
+				completion()
 		})
-		
 	}
 	
 	/**
 		Handler for the right action button
 	*/
-	func actionButtonPressed(sender :UIButton) {
-		print("Undo button pressed")
+	func actionButtonHandler(sender :UIButton) {
+		dismiss()
 	}
 }

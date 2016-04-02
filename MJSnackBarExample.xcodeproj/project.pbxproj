@@ -14,8 +14,7 @@
 		796E2C4F1CAE79170053CDDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 796E2C4D1CAE79170053CDDE /* LaunchScreen.storyboard */; };
 		796E2C5A1CAE79170053CDDE /* MJSnackBarExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E2C591CAE79170053CDDE /* MJSnackBarExampleTests.swift */; };
 		796E2C651CAE79170053CDDE /* MJSnackBarExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E2C641CAE79170053CDDE /* MJSnackBarExampleUITests.swift */; };
-		796E2C741CAE7C5B0053CDDE /* MJSnackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E2C731CAE7C5B0053CDDE /* MJSnackBar.swift */; };
-		796E2C761CAE804E0053CDDE /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E2C751CAE804E0053CDDE /* UIColorExtension.swift */; };
+		F92675CE05926E4327A6F2F2 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 160EE3B00C2D17EF726E4228 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +34,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		799831C81CAFC1D500ACA222 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		160EE3B00C2D17EF726E4228 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F82F2FF66BF122B6A433B44 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		796E2C411CAE79160053CDDE /* MJSnackBarExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MJSnackBarExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		796E2C441CAE79160053CDDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		796E2C461CAE79160053CDDE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,8 +63,7 @@
 		796E2C601CAE79170053CDDE /* MJSnackBarExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MJSnackBarExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		796E2C641CAE79170053CDDE /* MJSnackBarExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJSnackBarExampleUITests.swift; sourceTree = "<group>"; };
 		796E2C661CAE79170053CDDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		796E2C731CAE7C5B0053CDDE /* MJSnackBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MJSnackBar.swift; path = MJSnackBar/MJSnackBar.swift; sourceTree = SOURCE_ROOT; };
-		796E2C751CAE804E0053CDDE /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorExtension.swift; path = MJSnackBar/UIColorExtension.swift; sourceTree = SOURCE_ROOT; };
+		8D76A958962A507007022597 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F92675CE05926E4327A6F2F2 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +92,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2EF4C151D89C48F6B80EB6BE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				160EE3B00C2D17EF726E4228 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5FA8C26CE59FEB54A5330557 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8D76A958962A507007022597 /* Pods.debug.xcconfig */,
+				5F82F2FF66BF122B6A433B44 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		796E2C381CAE79160053CDDE = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +116,8 @@
 				796E2C581CAE79170053CDDE /* MJSnackBarExampleTests */,
 				796E2C631CAE79170053CDDE /* MJSnackBarExampleUITests */,
 				796E2C421CAE79160053CDDE /* Products */,
+				5FA8C26CE59FEB54A5330557 /* Pods */,
+				2EF4C151D89C48F6B80EB6BE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,7 +134,6 @@
 		796E2C431CAE79160053CDDE /* MJSnackBarExample */ = {
 			isa = PBXGroup;
 			children = (
-				796E2C721CAE79E10053CDDE /* MJSnackBar */,
 				796E2C441CAE79160053CDDE /* AppDelegate.swift */,
 				796E2C461CAE79160053CDDE /* ViewController.swift */,
 				796E2C481CAE79170053CDDE /* Main.storyboard */,
@@ -130,15 +162,6 @@
 			path = MJSnackBarExampleUITests;
 			sourceTree = "<group>";
 		};
-		796E2C721CAE79E10053CDDE /* MJSnackBar */ = {
-			isa = PBXGroup;
-			children = (
-				796E2C731CAE7C5B0053CDDE /* MJSnackBar.swift */,
-				796E2C751CAE804E0053CDDE /* UIColorExtension.swift */,
-			);
-			name = MJSnackBar;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,9 +169,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 796E2C691CAE79170053CDDE /* Build configuration list for PBXNativeTarget "MJSnackBarExample" */;
 			buildPhases = (
+				B4322FFD648EACBA7A594753 /* Check Pods Manifest.lock */,
 				796E2C3D1CAE79160053CDDE /* Sources */,
 				796E2C3E1CAE79160053CDDE /* Frameworks */,
 				796E2C3F1CAE79160053CDDE /* Resources */,
+				799831C81CAFC1D500ACA222 /* Embed Frameworks */,
+				4F420CA1D0071775FE881D0C /* Embed Pods Frameworks */,
+				3536D4E82A15E5592F09A7CB /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -265,15 +292,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3536D4E82A15E5592F09A7CB /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F420CA1D0071775FE881D0C /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4322FFD648EACBA7A594753 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		796E2C3D1CAE79160053CDDE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				796E2C741CAE7C5B0053CDDE /* MJSnackBar.swift in Sources */,
 				796E2C471CAE79160053CDDE /* ViewController.swift in Sources */,
 				796E2C451CAE79160053CDDE /* AppDelegate.swift in Sources */,
-				796E2C761CAE804E0053CDDE /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,8 +488,13 @@
 		};
 		796E2C6A1CAE79170053CDDE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D76A958962A507007022597 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MJSnackBarExample",
+				);
 				INFOPLIST_FILE = MJSnackBarExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Shakarang.MJSnackBarExample;
@@ -426,8 +504,13 @@
 		};
 		796E2C6B1CAE79170053CDDE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F82F2FF66BF122B6A433B44 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MJSnackBarExample",
+				);
 				INFOPLIST_FILE = MJSnackBarExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Shakarang.MJSnackBarExample;
@@ -500,6 +583,7 @@
 				796E2C6B1CAE79170053CDDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		796E2C6C1CAE79170053CDDE /* Build configuration list for PBXNativeTarget "MJSnackBarExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +592,7 @@
 				796E2C6E1CAE79170053CDDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		796E2C6F1CAE79170053CDDE /* Build configuration list for PBXNativeTarget "MJSnackBarExampleUITests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +601,7 @@
 				796E2C711CAE79170053CDDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

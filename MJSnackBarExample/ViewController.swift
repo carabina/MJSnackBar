@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MJSnackBar
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -37,7 +38,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 		customSnackBar["actionButtonTextColorNormal"] = 0xFFFFFF
 		customSnackBar["actionButtonTextColorSelected"] = 0xDDDDDD
 		
-		snackbar = MJSnackBar(customSnackBar: customSnackBar)
+		snackbar = MJSnackBar(custom: customSnackBar)
 	}
 
 	override func didReceiveMemoryWarning() {

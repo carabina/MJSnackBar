@@ -79,21 +79,21 @@ class MJSnackBar: NSObject {
 		createView()
 	}
 	
-	init(customSnackBar :Dictionary<String, Any>) {
+	init(custom :Dictionary<String, Any>) {
 		
 		super.init()
 		
-		if let spaceOnSide = customSnackBar["spaceOnSide"] { _spaceOnSide = spaceOnSide as! Double }
-		if let spaceOnBottom = customSnackBar["spaceOnBottom"] { _spaceOnBottom = spaceOnBottom as! Double }
-		if let snackViewHeight = customSnackBar["snackViewHeight"] { _snackViewHeight = snackViewHeight as! Double }
-		if let backgroundColor = customSnackBar["backgroundColor"] { _backgroundColor = backgroundColor as! Int }
-		if let backgroundAlpha = customSnackBar["backgroundAlpha"] { _backgroundAlpha = backgroundAlpha as! CGFloat }
-		if let appearanceDuration = customSnackBar["appearanceDuration"] { _appearanceDuration = appearanceDuration as! Double }
-		if let animationTime = customSnackBar["animationTime"] { _animationTime = animationTime as! Double }
-		if let leftActionTextColor = customSnackBar["leftActionTextColor"] { _leftActionTextColor = leftActionTextColor as! Int }
-		if let actionButtonText = customSnackBar["actionButtonText"] {	_actionButtonText = actionButtonText as! String }
-		if let actionButtonTextColorNormal = customSnackBar["actionButtonTextColorNormal"] { _actionButtonTextColorNormal = actionButtonTextColorNormal as! Int }
-		if let actionButtonTextColorSelected = customSnackBar["actionButtonTextColorSelected"] { _actionButtonTextColorSelected = actionButtonTextColorSelected as! Int }
+		if let spaceOnSide = custom["spaceOnSide"] { _spaceOnSide = spaceOnSide as! Double }
+		if let spaceOnBottom = custom["spaceOnBottom"] { _spaceOnBottom = spaceOnBottom as! Double }
+		if let snackViewHeight = custom["snackViewHeight"] { _snackViewHeight = snackViewHeight as! Double }
+		if let backgroundColor = custom["backgroundColor"] { _backgroundColor = backgroundColor as! Int }
+		if let backgroundAlpha = custom["backgroundAlpha"] { _backgroundAlpha = backgroundAlpha as! CGFloat }
+		if let appearanceDuration = custom["appearanceDuration"] { _appearanceDuration = appearanceDuration as! Double }
+		if let animationTime = custom["animationTime"] { _animationTime = animationTime as! Double }
+		if let leftActionTextColor = custom["leftActionTextColor"] { _leftActionTextColor = leftActionTextColor as! Int }
+		if let actionButtonText = custom["actionButtonText"] {	_actionButtonText = actionButtonText as! String }
+		if let actionButtonTextColorNormal = custom["actionButtonTextColorNormal"] { _actionButtonTextColorNormal = actionButtonTextColorNormal as! Int }
+		if let actionButtonTextColorSelected = custom["actionButtonTextColorSelected"] { _actionButtonTextColorSelected = actionButtonTextColorSelected as! Int }
 		
 		_screenSize = UIScreen.mainScreen().bounds
 		_shown = false

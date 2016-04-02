@@ -79,6 +79,9 @@ class MJSnackBar: NSObject {
 		createView()
 	}
 	
+	/**
+		Init with custom data
+	*/
 	init(custom :Dictionary<String, Any>) {
 		
 		super.init()

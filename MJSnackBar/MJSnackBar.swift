@@ -20,21 +20,21 @@ class MJSnackBar: NSObject {
 	/**
 		Properties to build the main view frame
 	*/
-	private let _spaceOnSide :Double = 5.0
-	private let _spaceOnBottom :Double = 5.0
-	private let _snackViewHeight :Double = 50.0
-	private let _backgroundColor :Int = 0x1D1D1D
-	private let _backgroundAlpha :CGFloat = 0.8
+	private var _spaceOnSide :Double = 5.0
+	private var _spaceOnBottom :Double = 5.0
+	private var _snackViewHeight :Double = 50.0
+	private var _backgroundColor :Int = 0x1D1D1D
+	private var _backgroundAlpha :CGFloat = 0.8
 	private let _corners :CGFloat = 3.0
 	
 	/**
 		Set all times used for SnackBar
 	*/
-	private let _appearanceDuration :Double = 4.0
-	private let _animationTime :Double = 0.3
+	private var _appearanceDuration :Double = 4.0
+	private var _animationTime :Double = 0.3
 	
 	/**
-		∏roperties to build the LeftAction label
+		Properties to build the LeftAction label
 	*/
 	private var _leftActionText :String!
 	private var _leftActionTextSize :CGFloat = 14.0
@@ -44,7 +44,7 @@ class MJSnackBar: NSObject {
 		Properties to build the ActionButton button
 	*/
 	private var _actionButtonTextSize :CGFloat = 14.0
-	private var _actionButtonText :NSString = "Undo"
+	private var _actionButtonText :NSString = NSLocalizedString("Undo", comment: "")
 	private var _actionButtonTextColorNormal :Int = 0xFFFFFF
 	private var _actionButtonTextColorSelected :Int = 0xDDDDDD
 	private var _snackBarItemsSideSize :CGFloat = 10.0
@@ -73,6 +73,28 @@ class MJSnackBar: NSObject {
 	override init() {
 		
 		super.init()
+		_screenSize = UIScreen.mainScreen().bounds
+		_shown = false
+		_animating = false
+		createView()
+	}
+	
+	init(customSnackBar :Dictionary<String, Any>) {
+		
+		super.init()
+		
+		if let spaceOnSide = customSnackBar["spaceOnSide"] { _spaceOnSide = spaceOnSide as! Double }
+		if let spaceOnBottom = customSnackBar["spaceOnBottom"] { _spaceOnBottom = spaceOnBottom as! Double }
+		if let snackViewHeight = customSnackBar["snackViewHeight"] { _snackViewHeight = snackViewHeight as! Double }
+		if let backgroundColor = customSnackBar["backgroundColor"] { _backgroundColor = backgroundColor as! Int }
+		if let backgroundAlpha = customSnackBar["backgroundAlpha"] { _backgroundAlpha = backgroundAlpha as! CGFloat }
+		if let appearanceDuration = customSnackBar["appearanceDuration"] { _appearanceDuration = appearanceDuration as! Double }
+		if let animationTime = customSnackBar["animationTime"] { _animationTime = animationTime as! Double }
+		if let leftActionTextColor = customSnackBar["leftActionTextColor"] { _leftActionTextColor = leftActionTextColor as! Int }
+		if let actionButtonText = customSnackBar["actionButtonText"] {	_actionButtonText = actionButtonText as! String }
+		if let actionButtonTextColorNormal = customSnackBar["actionButtonTextColorNormal"] { _actionButtonTextColorNormal = actionButtonTextColorNormal as! Int }
+		if let actionButtonTextColorSelected = customSnackBar["actionButtonTextColorSelected"] { _actionButtonTextColorSelected = actionButtonTextColorSelected as! Int }
+		
 		_screenSize = UIScreen.mainScreen().bounds
 		_shown = false
 		_animating = false

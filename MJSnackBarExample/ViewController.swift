@@ -10,10 +10,12 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-	let snackbar = MJSnackBar()
+	var snackbar: MJSnackBar! = MJSnackBar()
 	
 	var dataArray = [
-		"azerty","azert"
+		"Walking the dog",
+		"Take a shower",
+		"Clean house"
 	]
 	
 	override func viewDidLoad() {
@@ -21,6 +23,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 		// Do any additional setup after loading the view, typically from a nib.
 		
 		self.edgesForExtendedLayout = .None
+		
+		var customSnackBar = Dictionary<String, Any>()
+		customSnackBar["spaceOnSide"] = 5.0
+		customSnackBar["spaceOnBottom"] = 5.0
+		customSnackBar["snackViewHeight"] = 50.0
+		customSnackBar["backgroundColor"] = 0x1D1D1D
+		customSnackBar["backgroundAlpha"] = CGFloat(0.8)
+		customSnackBar["appearanceDuration"] = 4.0
+		customSnackBar["animationTime"] = 0.3
+		customSnackBar["leftActionTextColor"] = 0xFFFFFF
+		customSnackBar["actionButtonText"] = "Undo"
+		customSnackBar["actionButtonTextColorNormal"] = 0xFFFFFF
+		customSnackBar["actionButtonTextColorSelected"] = 0xDDDDDD
+		snackbar = MJSnackBar(customSnackBar: customSnackBar)
 	}
 
 	override func didReceiveMemoryWarning() {
